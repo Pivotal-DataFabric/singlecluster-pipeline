@@ -1,0 +1,18 @@
+---
+platform: linux
+
+inputs:
+  - name: singlecluster
+  - name: hdp_tars_tarball
+  - name: tomcat
+  - name: curl
+  - name: jdbc
+
+outputs:
+  - name: artifacts
+
+run:
+  path: singlecluster/singlecluster.bash
+  args:
+    - "2.5.3.0"
+    - "HDP"

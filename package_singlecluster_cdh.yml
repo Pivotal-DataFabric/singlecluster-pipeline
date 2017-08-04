@@ -1,0 +1,18 @@
+---
+platform: linux
+
+inputs:
+  - name: singlecluster
+  - name: cdh_tars_tarball
+  - name: tomcat
+  - name: curl
+  - name: jdbc
+
+outputs:
+  - name: artifacts
+
+run:
+  path: singlecluster/singlecluster.bash
+  args:
+    - "5.10.2"
+    - "CDH"
