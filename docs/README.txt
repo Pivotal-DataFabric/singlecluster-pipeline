@@ -1,7 +1,7 @@
 1. What is this?
 ================
 
-SingleCluster for Hadoop stack 2.x of PHD
+SingleCluster for Hadoop stack 2.x of HDP and 5.x of CDH
 
 SingleCluster is a zero-configuration 3 node (up to 10) cluster
 running on a single machine.
@@ -16,10 +16,7 @@ will be started:
 3 Data Nodes
 3 Region Servers
 3 Node Managers
-3 PXF Servers
 1 Hive Thrift server
-
-Uses an unmodified version of relevant PHD services
 
 2. Support
 ==========
@@ -29,7 +26,7 @@ dov.dorin AT gopivotal.com
 3. Requirements
 ===============
 
-1.  Oracle Java 1.7.x JDK
+1.  Oracle Java 1.7.x JDK or later
 	(not JRE as scripts currently use jps, will be fixed in the future)
 
 4. Setup
@@ -41,7 +38,7 @@ dov.dorin AT gopivotal.com
 2.  Initialize the cluster:
 	bin/init-gphd.sh
 
-3.  Start GPHD: 
+3.  Start GPHD:
 	bin/start-gphd.sh
 
 5. Using
@@ -66,6 +63,13 @@ CentOS
 
 7. Changes
 ==========
+
+v2.1.0
+------
+
+- Removed PXF component as part of the single cluster.
+- Support for HDP 2.x and CDH 5.x
+-
 
 v2.0.2
 ------
@@ -176,7 +180,7 @@ v1.7.4
 v1.7.3
 ------
 
-- GPSQL-1618: yarn.nodemanager.aux-services value changed to mapreduce_shuffle.  
+- GPSQL-1618: yarn.nodemanager.aux-services value changed to mapreduce_shuffle.
 - GPSQL-1445: Use stack build from new Jenkins job
 - tar fetch is now logged
 - GPSQL-1374: reduce verbosity
@@ -195,7 +199,7 @@ v1.7.1
 - added -f to rm in copy_templates, tars/release-head/Makefile and
   tars/dev-head/Makefile
 - make clean doens't fail on rm -rf
-- ENGINF-810: Please chmod 777 for DFS_URL/../ per the hdfs privilege 
+- ENGINF-810: Please chmod 777 for DFS_URL/../ per the hdfs privilege
   check involved in hawq
 - GPSQL-1180: hbase jar file name changed in dev-stack
 
@@ -261,9 +265,9 @@ v1.5.1
 	- Add BUILD_NUMBER environment variable
 	- add refresh_tars target to download latest tar files for a release
 - bring back SNAPSHOT postfix :(
-- Fix HD-5592: Hive and HBase tarballs are not fetched automatically 
+- Fix HD-5592: Hive and HBase tarballs are not fetched automatically
   in SingleCluster build
-- Fix HD-5595: PXF hive regressions fail: cannot access 
+- Fix HD-5595: PXF hive regressions fail: cannot access
   com.facebook.fb303.FacebookService
 - HD-5329: gpxf->pxf name change
 - build output is always singlecluster.tar.gz

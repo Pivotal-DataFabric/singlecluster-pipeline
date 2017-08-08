@@ -59,7 +59,7 @@ resources:
 - name: singlecluster
   type: git
   source:
-    uri: https://github.com/l-wang/singlecluster-pipeline.git
+    uri: https://github.com/Pivotal-DataFabric/singlecluster-pipeline.git
     branch: master
 
 # HDP Tars Tarball

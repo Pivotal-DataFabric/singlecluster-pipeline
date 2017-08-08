@@ -94,21 +94,6 @@ extract_stack_hdp:
 		grep "\(hadoop\|hbase\|zookeeper\|hive\|ranger\|tez\)" | \
 		xargs -n1 basename >> $(VERSIONSFILE)
 
-.PHONY: merge_pxf
-merge_pxf:
-	mkdir $(BUILDROOT)/pxf
-	for X in $(BUILDROOT)/pxf-*; do \
-		mv $$X/* $(BUILDROOT)/pxf; \
-		rmdir $$X; \
-	done;
-
-.PHONY: softlink_pxf
-softlink_pxf:
-	cd $(BUILDROOT)/pxf && \
-	for X in pxf-*-[0-9]*.jar; do \
-		ln -s $$X `echo $$X | sed -e 's/-[a-zA-Z0-9.]*.jar/.jar/'`; \
-	done;
-
 .PHONY: rename_tomcat
 rename_tomcat:
 	mv `echo $(BUILDROOT)/apache-tomcat-*` $(BUILDROOT)/tomcat
@@ -121,7 +106,7 @@ copy_templates: $(TEMPLATES)
 		fi; \
 	done;
 	cp -r $(TEMPLATESROOT)/conf $(BUILDROOT)
-	
+
 	-find $(BUILDROOT) -iname "*~" | xargs rm -f
 	if [ "$(HADOOP_DISTRO)" == "CDH" ]; then \
 		cat $(TEMPLATESROOT)/hive/conf/hive-site.xml | sed "s/<value>tez<\/value>/<value>mr<\/value>/" > $(BUILDROOT)/hive/conf/hive-site.xml;\
