@@ -9,7 +9,7 @@ export PXF_STORAGE_ROOT=$STORAGE_ROOT/pxf
 export RANGER_STORAGE_ROOT=$STORAGE_ROOT/ranger
 
 # settings
-export SLAVES=3
+export SLAVES=${SLAVES:-3}
 
 # Automatically start HBase during GPHD startup
 export START_HBASE=true
