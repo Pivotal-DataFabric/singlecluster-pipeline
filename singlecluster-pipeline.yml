@@ -6,8 +6,6 @@ jobs:
     - get: cdh_tars_tarball
     - get: jdbc
     - get: tomcat
-    - get: curl
-      resource: curl_bin_tarball
     - get: maven_centos6_image
     - get: singlecluster
       trigger: true
@@ -24,8 +22,6 @@ jobs:
     - get: hdp_tars_tarball
     - get: jdbc
     - get: tomcat
-    - get: curl
-      resource: curl_bin_tarball
     - get: maven_centos6_image
     - get: singlecluster
       trigger: true
@@ -41,8 +37,8 @@ resources:
 - name: singlecluster-HDP
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: singlecluster-without-pxf/singlecluster-HDP.tar.gz
@@ -50,8 +46,8 @@ resources:
 - name: singlecluster-CDH
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: singlecluster-without-pxf/singlecluster-CDH.tar.gz
@@ -66,8 +62,8 @@ resources:
 - name: hdp_tars_tarball
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: hortonworks/HDP-2.5.3.0-centos6-tars-tarball.tar.gz
@@ -76,8 +72,8 @@ resources:
 - name: cdh_tars_tarball
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: cloudera/CDH-5.10.2.tar.gz
@@ -85,8 +81,8 @@ resources:
 - name: jdbc
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: jdbc/postgresql-jdbc-8.4.704.jar
@@ -94,20 +90,11 @@ resources:
 - name: tomcat
   type: s3
   source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
+    access_key_id: {{bucket-access-key-id}}
+    secret_access_key: {{bucket-secret-access-key}}
     bucket: {{pxf-aws-bucket-name}}
     region_name: {{aws-region}}
     versioned_file: tomcat/apache-tomcat-7.0.62.tar.gz
-
-- name: curl_bin_tarball
-  type: s3
-  source:
-    access_key_id: {{aws-access-key-id}}
-    secret_access_key: {{aws-secret-access-key}}
-    bucket: {{aws-bucket-name}}
-    region_name: {{aws-region}}
-    versioned_file: hdb_dependencies/binaries/curl-7.50.3-bin.tgz
 
 - name: maven_centos6_image
   type: docker-image
