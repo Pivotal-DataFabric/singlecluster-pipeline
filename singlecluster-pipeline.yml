@@ -6,11 +6,11 @@ jobs:
     - get: cdh_tars_tarball
     - get: jdbc
     - get: tomcat
-    - get: maven_centos6_image
+    - get: centos-gpdb-dev-6
     - get: singlecluster
       trigger: true
   - task: package_singlecluster
-    image: maven_centos6_image
+    image: centos-gpdb-dev-6
     file: singlecluster/package_singlecluster_cdh.yml
   - put: singlecluster-CDH
     params:
@@ -22,11 +22,11 @@ jobs:
     - get: hdp_tars_tarball
     - get: jdbc
     - get: tomcat
-    - get: maven_centos6_image
+    - get: centos-gpdb-dev-6
     - get: singlecluster
       trigger: true
   - task: package_singlecluster
-    image: maven_centos6_image
+    image: centos-gpdb-dev-6
     file: singlecluster/package_singlecluster_hdp.yml
   - put: singlecluster-HDP
     params:
@@ -96,9 +96,8 @@ resources:
     region_name: {{aws-region}}
     versioned_file: tomcat/apache-tomcat-7.0.62.tar.gz
 
-- name: maven_centos6_image
+- name: centos-gpdb-dev-6
   type: docker-image
   source:
-    repository: pivotaldata/maven-centos6
-    username: {{docker-username}}
-    password: {{docker-password}}
+    repository: pivotaldata/centos-gpdb-dev
+    tag: '6-gcc6.2-llvm3.7'

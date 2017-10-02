@@ -26,7 +26,7 @@ Initialization
 	-	cd singlecluster-CDH
 2. Initialize an instance
 	-	bin/init-gphd.sh
-2. Add the following to your environment
+3. Add the following to your environment
 	-	export GPHD_ROOT=<singlecluster location, e.g. ~/singlecluster-PHD>
 	-	export HADOOP_ROOT=$GPHD_ROOT/hadoop
 	-	export HBASE_ROOT=$GPHD_ROOT/hbase
@@ -64,3 +64,11 @@ Notes
 
 1.	Make sure you have enough memory and space to run all services. Typically about 24GB space is needed to run pxf automation.
 2.	All of the data is stored under $GPHD_ROOT/storage. Cleanup this directory before running init again.
+
+Concourse Pipeline Deployment
+-----------------------------
+
+To deploy the concourse pipeline that will build the single cluster tarballs and upload them to S3, use the following command:
+```
+fly -t toolsmiths sp -p singlecluster -c singlecluster-pipeline.yml -l ~/workspace/continuous-integration/secrets/gpdb_common-ci-secrets.yml
+```
