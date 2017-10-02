@@ -22,3 +22,6 @@ for (( i=0; i < ${SLAVES}; i++ ))
 do
 	${bin}/hadoop-datanode.sh start ${i} | sed "s/^/node $i: /"
 done
+
+# Wait for Namenode to leave safemode
+${HADOOP_BIN} dfsadmin -safemode wait
