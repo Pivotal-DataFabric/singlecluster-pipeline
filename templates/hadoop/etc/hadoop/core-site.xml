@@ -25,4 +25,8 @@
        <name>hadoop.security.key.provider.path</name>
        <value>kms://http@0.0.0.0:16000/kms</value>
     </property>
+	<property>
+		<name>ipc.ping.interval</name>
+		<value>900000</value>
+	</property>
 </configuration>
