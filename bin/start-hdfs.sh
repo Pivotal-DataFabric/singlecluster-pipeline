@@ -24,4 +24,4 @@ do
 done
 
 # Wait for Namenode to leave safemode
-${HADOOP_BIN}/hdfs dfsadmin -safemode wait
+${HADOOP_BIN}/hdfs dfsadmin -safemode wait || sleep 5
