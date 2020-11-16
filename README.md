@@ -1,4 +1,4 @@
-SingleCluster
+<h1> VMware has ended active development of this project, this repository will no longer be updated.</h1><br>SingleCluster
 =============
 
 Single cluster is a self contained, easy to deploy distribution of HDP or CDH
